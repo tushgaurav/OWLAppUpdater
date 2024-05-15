@@ -6,6 +6,7 @@ import "./globals.css";
 // Icons
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RiSettings5Fill } from "react-icons/ri";
+import { TbAppsFilled } from "react-icons/tb";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 function TopNav() {
   return (
-    <nav className="bg-gradient-to-r from-[#4E144F] to-[#C6494B] p-2">
+    <nav className="bg-gradient-to-r from-[#4E144F] to-[#C6494B] p-2 sticky top-0">
       <div className="flex justify-between px-2">
         <img
           className="h-6 mt-1"
@@ -33,10 +34,13 @@ function TopNav() {
 
 function SideNav() {
   return (
-    <div className=" bg-gradient-to-b from-[#50154F] to-[#C64A4B] p-4 w-min h-full">
+    <div className="fixed h-full bg-gradient-to-b from-[#50154F] to-[#C64A4B] p-4 w-min ">
       <div className="flex flex-col gap-4 text-xl">
         <Link href="/">
           <RxHamburgerMenu />
+        </Link>
+        <Link href="/apps">
+          <TbAppsFilled />
         </Link>
         <Link href="/settings">
           <RiSettings5Fill />
@@ -56,11 +60,9 @@ export default function RootLayout({
       <body className={inter.className}>
 
         <TopNav />
-        <div className="flex h-full">
-          <SideNav />
-          <div className="p-4">
-            {children}
-          </div>
+        <SideNav />
+        <div className="ml-14 p-4">
+          {children}
         </div>
 
       </body>
